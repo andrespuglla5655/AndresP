@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gateways</title>
+  <link rel="stylesheet" href="./styles/AddGateWay.css">
+</head>
+<body>
+  <!-- Barra superior -->
+  <div class="topbar">
+    <div class="logo">
+      <img src="./public/assets/images/agua4.png" alt="Logo" class="logo-image">
+      <h2>IoT WATER</h2>
+    </div>
+    <div class="user-info">
+      <img src="./public/assets/images/usuario.png" alt="User Avatar" class="user-avatar">
+      <span>Adam Schwartz</span>
+      <div class="notifications">
+        <i class="fas fa-bell"></i>
+        <div class="badge">3</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Barra lateral -->
+  <div class="sidebar">
+    <ul>
+      <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+      <li class="dropdown">
+        <a href="javascript:void(0)" onclick="toggleDropdown('gatewayMenu')"><i class="fas fa-cogs"></i> Gateways <i class="fas fa-chevron-down"></i></a>
+        <ul id="gatewayMenu" class="dropdown-menu">
+          <li><a href="AddGateWay.html">Agregar nuevo gateway</a></li>
+          <li><a href="GateWayDetails.html">Ver detalles</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="javascript:void(0)" onclick="toggleDropdown('medidorMenu')"><i class="fas fa-water"></i> Medidores <i class="fas fa-chevron-down"></i></a>
+        <ul id="medidorMenu" class="dropdown-menu">
+          <li><a href="agregar_medidor.html">Agregar nuevo medidor</a></li>
+          <li><a href="editar_medidor.html">Editar medidor existente</a></li>
+        </ul>
+      </li>
+      <li><a href="#"><i class="fas fa-user-cog"></i> Usuarios</a></li>
+    </ul>
+  </div>
+
+  <!-- Contenido principal -->
+  <div class="content">
+    <div class="gateway-container">
+      <h1 class="title">Gateways</h1>
+      <button class="add-button" onclick="openNewGatewayModal()">+ Agregar Gateway</button>
+
+      <!-- Tabla de Gateways -->
+      <table class="gateway-table">
+        <thead>
+          <tr>
+            <th>ID del Gateway</th>
+            <th>Ubicación</th>
+            <th>Estado</th>
+            <th>Fecha de Configuración</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="gatewayTableBody">
+          <!-- Filas de gateway se llenarán dinámicamente -->
+        </tbody>
+      </table>
+
+      <!-- Modal para Nuevo Gateway -->
+      <div id="newGatewayModal" class="modal hidden">
+        <div class="modal-content">
+          <h2 class="modal-title">Nuevo Gateway</h2>
+          <form class="gateway-form" onsubmit="registerGateway(event)">
+            <div class="form-group">
+              <label for="gatewayId">ID del Gateway</label>
+              <input type="text" id="gatewayId" required>
+            </div>
+            <div class="form-group">
+              <label for="location">Ubicación</label>
+              <input type="text" id="location" required>
+            </div>
+            <div class="form-group">
+              <label for="initialState">Estado</label>
+              <select id="initialState" required>
+                <option value="">Selecciona un estado</option>
+                <option value="activo">Activo</option>
+                <option value="inactivo">Inactivo</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="configDate">Fecha de Configuración</label>
+              <input type="date" id="configDate" required>
+            </div>
+            <button type="submit" class="register-button">Registrar</button>
+            <button type="button" onclick="closeModal('newGatewayModal')">Cancelar</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Modal para Editar Gateway -->
+      <div id="editGatewayModal" class="modal hidden">
+        <div class="modal-content">
+          <h2 class="modal-title">Editar Gateway</h2>
+          <form class="gateway-form" onsubmit="updateGateway(event)">
+            <div class="form-group">
+              <label for="editGatewayId">ID del Gateway</label>
+              <input type="text" id="editGatewayId" required disabled>
+            </div>
+            <div class="form-group">
+              <label for="editLocation">Ubicación</label>
+              <input type="text" id="editLocation" required>
+            </div>
+            <div class="form-group">
+              <label for="editInitialState">Estado</label>
+              <select id="editInitialState" required>
+                <option value="activo">Activo</option>
+                <option value="inactivo">Inactivo</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="editConfigDate">Fecha de Configuración</label>
+              <input type="date" id="editConfigDate" required>
+            </div>
+            <button type="submit" class="register-button">Actualizar</button>
+            <button type="button" onclick="closeModal('editGatewayModal')">Cancelar</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="./scripts/AddGateWay.js"></script>
+</body>
+</html>

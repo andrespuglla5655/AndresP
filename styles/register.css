@@ -1,0 +1,139 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #67c8ff, #007bff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    animation: fadeIn 1.5s ease-out;
+}
+
+/* Animación de aparición suave */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 50px;
+    animation: slideIn 1s ease-out;
+}
+
+/* Animación de deslizamiento de la izquierda */
+@keyframes slideIn {
+    from {
+        transform: translateX(-50%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.logo img {
+    width: 300px;
+    height: auto;
+    animation: zoomIn 2s ease-out;
+}
+
+/* Animación de zoom en el logo */
+@keyframes zoomIn {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.form-container {
+    background-color: #1d3557;
+    color: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 350px;
+    animation: fadeInUp 1.5s ease-out;
+}
+
+/* Animación de aparición hacia arriba */
+@keyframes fadeInUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.form-container h2 {
+    margin-bottom: 20px;
+    animation: slideInText 1s ease-out;
+}
+
+/* Animación de deslizamiento de texto */
+@keyframes slideInText {
+    from {
+        transform: translateX(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.form-container input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Efecto de enfoque en los campos de entrada */
+.form-container input:focus {
+    border: 2px solid #457b9d;
+    box-shadow: 0 0 8px rgba(69, 123, 157, 0.6);
+}
+
+.form-container input[type="submit"] {
+    background-color: #457b9d;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Efecto hover y escala del botón */
+.form-container input[type="submit"]:hover {
+    background-color: #1d4b73;
+    transform: scale(1.05);
+}
+
+/* Enlace hover */
+.form-container a {
+    color: #a8dadc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.form-container a:hover {
+    color: #fff;
+    text-decoration: underline;
+}

@@ -1,0 +1,232 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Asegura un flujo vertical */
+}
+
+.topbar {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 5px 20px; /* Ajustado para hacer la topbar más delgada */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-image {
+    width: 50px; /* Ajusta este valor según sea necesario */
+    height: auto; /* Mantiene la proporción original */
+    margin-right: 10px; /* Espacio entre el logo y el texto */
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.notifications {
+    position: relative;
+}
+
+.badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 5px 7px;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #00174d;
+    color: white;
+    height: calc(100vh - 60px); /* Ajusta la altura para que no cubra la topbar */
+    position: fixed;
+    top: 60px; /* Mueve la barra lateral hacia abajo */
+    left: 0;
+    padding-top: 20px; /* Espacio adicional en la parte superior */
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin: 20px 0;
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar a i {
+    margin-right: 15px; /* Espacio adicional entre el ícono y el texto */
+}
+
+.sidebar a:hover {
+    background-color: #002569;
+}
+
+.main-content {
+    margin-left: 250px;
+    padding: 80px 20px;
+    flex: 1;
+    transition: margin-left 0.3s; /* Transición suave al cambiar el tamaño */
+}
+
+.detail-container {
+    display: flex;
+    justify-content: space-between; /* Separa la imagen y la info */
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.details-info {
+    flex: 1;
+}
+
+.detail-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.detail-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.detail-container h3 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.info-section {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.info-section label {
+    font-weight: bold;
+    color: #555;
+}
+
+.info-section p {
+    margin: 5px 0;
+    color: #333;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.grid-item {
+    background-color: #f0f8ff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Media Queries para Responsividad */
+@media (min-width: 768px) {
+    .main-content {
+        padding: 80px 20px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .sidebar {
+        width: 300px; /* Aumenta el ancho en pantallas más grandes */
+    }
+
+    .main-content {
+        margin-left: 300px; /* Ajusta el margen para el contenido principal */
+    }
+}
+
+@media (min-width: 1920px) {
+    .topbar {
+        padding: 10px 40px; /* Ajusta el padding para pantallas grandes */
+    }
+
+    .sidebar {
+        padding-top: 30px; /* Espacio adicional en la barra lateral */
+    }
+}
+
+/* Estilos de la tabla */
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
+    background-color: #f8fcff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.styled-table tbody tr:hover {
+    background-color: #f1f7f9;
+    cursor: pointer;
+}

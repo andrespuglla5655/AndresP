@@ -1,0 +1,282 @@
+/* General */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8fcff;
+  }
+  
+  /* Topbar */
+  .topbar {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    height: 60px; /* Define una altura fija */
+    position: fixed; /* Fija la barra superior en su lugar */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Asegura que quede encima de otros elementos */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo img {
+    height: 40px;
+    margin-right: 10px;
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-info img {
+    height: 30px;
+    margin-right: 10px;
+  }
+  
+  /* Sidebar */
+  .sidebar {
+    width: 250px;
+    background-color: #00064d;
+    color: white;
+    height: calc(100vh - 60px); /* Ajusta la altura para que no cubra la topbar */
+    position: fixed;
+    top: 60px; /* Mueve la barra lateral justo debajo de la topbar */
+    left: 0;
+    padding-top: 20px;
+    z-index: 900; /* Asegura que quede debajo de la topbar */
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar li {
+    margin: 20px 0;
+  }
+  
+  .sidebar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .sidebar a i {
+    margin-right: 15px; /* Espacio adicional entre el ícono y el texto */
+  }
+  
+  .sidebar a:hover {
+    background-color: #00695c;
+  }
+  
+  /* Content */
+  .content {
+    padding: 30px;
+    margin: 60px 0 0 270px; /* Ajusta el margen superior e izquierdo */
+    background-color: #f8fcff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: calc(100% - 270px); /* Asegura que el contenido no se salga de los márgenes */
+  }
+  
+  /* Botones */
+  .add-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-bottom: 20px;
+  }
+  
+  .add-button:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+  }
+  
+  /* Tablas */
+  .gateway-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .gateway-table th,
+  .gateway-table td {
+    border: 1px solid #dee2e6;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .table-row {
+    transition: background-color 0.3s;
+  }
+  
+  .table-row:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .status-active {
+    color: #28a745;
+  }
+  
+  .status-inactive {
+    color: #dc3545;
+  }
+  
+  /* Formularios */
+  .modal-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .gateway-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #555;
+  }
+  
+  input,
+  select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+  }
+  
+  input:focus,
+  select:focus {
+    border-color: #007bff;
+  }
+  
+  /* Botones de formulario */
+  .register-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    width: 100%;
+  }
+  
+  .register-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+  
+  .delete-button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .delete-button:hover {
+    background-color: #c82333;
+  }
+  
+  .edit-button {
+    background-color: #ffc107;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .edit-button:hover {
+    background-color: #e0a800;
+  }
+  
+  /* Animations */
+  .fade {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  /* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Asegura que el modal esté encima de otros elementos */
+  }
+  
+  .modal.hidden {
+    display: none; /* Oculta el modal cuando tiene la clase 'hidden' */
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px; /* Ancho del modal */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra para un efecto de elevación */
+  }
+  
+  /* Estilo para el título del modal */
+  .modal-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilo para la clase de formulario dentro del modal */
+  .gateway-form {
+    display: flex;
+    flex-direction: column; /* Alinea los elementos del formulario en una columna */
+  }
+  
+  /* Espaciado entre los grupos de formulario */
+  .form-group {
+    margin-bottom: 15px;
+  }

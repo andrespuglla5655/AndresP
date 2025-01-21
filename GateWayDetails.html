@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IoT Water Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/addMedidor.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Barra superior -->
+  <div class="topbar">
+    <div class="logo">
+      <img src="./public/assets/images/agua4.png" alt="Logo" class="logo-image">
+      <h2>IoT WATER</h2>
+    </div>
+    <div class="user-info" style="margin-left: 20px;">
+      <img src="./public/assets/images/usuario.png" alt="User Avatar">
+      <span>Adam Schwartz</span>
+      <div class="notifications">
+        <i class="fas fa-bell"></i>
+        <div class="badge">3</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Barra lateral -->
+  <div class="sidebar">
+    <ul>
+      <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+      <li class="dropdown">
+        <a href="javascript:void(0)" onclick="toggleDropdown('gatewayMenu')"><i class="fas fa-cogs"></i> Gateways <i class="fas fa-chevron-down"></i></a>
+        <ul id="gatewayMenu" class="dropdown-menu">
+          <li><a href="AddGateWay.html">Agregar nuevo gateway</a></li>
+          <li><a href="editar_gateway.html">Ver detalles </a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="javascript:void(0)" onclick="toggleDropdown('medidorMenu')"><i class="fas fa-water"></i> Medidores <i class="fas fa-chevron-down"></i></a>
+        <ul id="medidorMenu" class="dropdown-menu">
+          <li><a href="agregar_medidor.html">Agregar nuevo medidor</a></li>
+          <li><a href="editar_medidor.html">Editar medidor existente</a></li>
+        </ul>
+      </li>
+      <li><a href="#"><i class="fas fa-user-cog"></i> Usuarios</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <h1>Medidores</h1>
+    <h2>Detalle del Medidor</h2>
+
+    <!-- Container con imagen al lado -->
+    <div class="detail-container">
+      <div class="details-info">
+        <h3>Información del Medidor</h3>
+        <div class="info-section">
+          <label>Modelo:</label>
+          <p>3424hjhjk</p>
+          <label>Código:</label>
+          <p>3424hjhjk</p>
+          <label>Fecha de instalación:</label>
+          <p>12 Jan 2022</p>
+          <label>Ubicación:</label>
+          <p>id del medidor</p>
+        </div>
+      </div>
+      <!-- Imagen al lado -->
+      <div class="detail-image">
+        <img src="./public/assets/images/medidor.png" alt="Medidor">
+      </div>
+    </div>
+
+    <!-- Tabla Mejorada -->
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Modelo</th>
+          <th>Código</th>
+          <th>Fecha de Instalación</th>
+          <th>Ubicación</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>3424hjhjk</td>
+          <td>AB123</td>
+          <td>12 Jan 2022</td>
+          <td>Sector 1</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>5634ghijk</td>
+          <td>CD456</td>
+          <td>15 Feb 2023</td>
+          <td>Sector 2</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>7890lmno</td>
+          <td>EF789</td>
+          <td>20 Mar 2024</td>
+          <td>Sector 3</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    // Función para alternar el menú desplegable
+    function toggleDropdown(menuId) {
+      const menu = document.getElementById(menuId);
+      const arrow = menu.previousElementSibling.querySelector('i');
+
+      if (menu.style.display === 'block') {
+        menu.style.display = 'none';
+        arrow.classList.remove('fa-chevron-up');
+        arrow.classList.add('fa-chevron-down');
+      } else {
+        menu.style.display = 'block';
+        arrow.classList.remove('fa-chevron-down');
+        arrow.classList.add('fa-chevron-up');
+      }
+    }
+  </script>
+</body>
+</html>
