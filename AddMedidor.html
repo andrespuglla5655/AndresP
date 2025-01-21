@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medidores</title>
+  <link rel="stylesheet" href="./styles/AddMedidor.css">
+</head>
+<body>
+  <!-- Barra superior -->
+  <div class="topbar">
+    <div class="logo">
+      <img src="./public/assets/images/agua4.png" alt="Logo" class="logo-image">
+      <h2>IoT WATER</h2>
+    </div>
+    <div class="user-info">
+      <img src="./public/assets/images/usuario.png" alt="User Avatar" class="user-avatar">
+      <span>Adam Schwartz</span>
+      <div class="notifications">
+        <i class="fas fa-bell"></i>
+        <div class="badge">3</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Barra lateral -->
+  <div class="sidebar">
+    <ul>
+      <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+      <li class="dropdown">
+        <a href="javascript:void(0)" class="toggle-item" onclick="toggleDropdown('gatewayMenu')">
+          <i class="fas fa-cogs"></i> Gateways <i class="fas fa-chevron-down"></i>
+        </a>
+        <ul id="gatewayMenu" class="dropdown-menu">
+          <li><a href="AddGateWay.html">Agregar nuevo gateway</a></li>
+          <li><a href="GateWayDetails.html">Ver detalles</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="javascript:void(0)" class="toggle-item" onclick="toggleDropdown('medidorMenu')">
+          <i class="fas fa-water"></i> Medidores <i class="fas fa-chevron-down"></i>
+        </a>
+        <ul id="medidorMenu" class="dropdown-menu">
+          <li><a href="agregar_medidor.html">Agregar nuevo medidor</a></li>
+          <li><a href="editar_medidor.html">Editar medidor existente</a></li>
+        </ul>
+      </li>
+      <li><a href="#"><i class="fas fa-user-cog"></i> Usuarios</a></li>
+    </ul>
+  </div>
+
+  <!-- Contenido principal -->
+  <div class="content">
+    <div class="medidor-container">
+      <h1 class="title">Medidores</h1>
+      <button class="add-button" onclick="openNewMedidorModal()">+ Añadir Medidor</button>
+
+      <!-- Tabla de Medidores -->
+      <table class="gateway-table">
+        <thead>
+          <tr>
+            <th>ID del Medidor</th>
+            <th>Ubicación</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="medidorTableBody">
+          <!-- Filas de medidores se llenarán dinámicamente -->
+        </tbody>
+      </table>
+
+      <!-- Modal para Nuevo Medidor -->
+      <div id="newMedidorModal" class="modal hidden">
+        <div class="modal-content">
+          <h2 class="modal-title">Nuevo Medidor</h2>
+          <form class="gateway-form" onsubmit="registerMedidor(event)">
+            <div class="form-group">
+              <label for="medidorId">ID del Medidor</label>
+              <input type="text" id="medidorId" required>
+            </div>
+            <div class="form-group">
+              <label for="medidorLocation">Ubicación</label>
+              <input type="text" id="medidorLocation" required>
+            </div>
+            <div class="form-group">
+              <label for="medidorDate">Fecha</label>
+              <input type="date" id="medidorDate" required>
+            </div>
+            <div class="form-group">
+              <label for="medidorState">Estado</label>
+              <select id="medidorState" required>
+                <option value="">Selecciona un estado</option>
+                <option value="activo">Activo</option>
+                <option value="inactivo">Inactivo</option>
+              </select>
+            </div>
+            <button type="submit" class="register-button">Registrar</button>
+            <button type="button" onclick="closeModal('newMedidorModal')">Cancelar</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Modal para Editar Medidor -->
+      <div id="editMedidorModal" class="modal hidden">
+        <div class="modal-content">
+          <h2 class="modal-title">Editar Medidor</h2>
+          <form class="gateway-form" onsubmit="updateMedidor(event)">
+            <div class="form-group">
+              <label for="editMedidorId">ID del Medidor</label>
+              <input type="text" id="editMedidorId" required disabled>
+            </div>
+            <div class="form-group">
+              <label for="editMedidorLocation">Ubicación</label>
+              <input type="text" id="editMedidorLocation" required>
+            </div>
+            <div class="form-group">
+              <label for="editMedidorDate">Fecha</label>
+              <input type="date" id="editMedidorDate" required>
+            </div>
+            <div class="form-group">
+              <label for="editMedidorState">Estado</label>
+              <select id="editMedidorState" required>
+                <option value="activo">Activo</option>
+                <option value="inactivo">Inactivo</option>
+              </select>
+            </div>
+            <button type="submit" class="register-button">Actualizar</button>
+            <button type="button" onclick="closeModal('editMedidorModal')">Cancelar</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="./scripts/AddMedidor.js"></script>
+  <script src="./scripts/dropdown.js"></script>
+</body>
+</html>

@@ -1,232 +1,327 @@
+/* General */
 body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    display: flex;
-    flex-direction: column; /* Asegura un flujo vertical */
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 60px 0 0 270px; /* Padding superior para la topbar y izquierdo para la sidebar */
+  background-color: #f8fcff;
+  animation: fadeIn 1s ease-in-out; /* Animación de aparición al cargar la página */
 }
 
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(20px); /* Desplazamiento hacia abajo en la entrada */
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Topbar */
 .topbar {
-    background-color: #ffffff;
-    color: rgb(0, 0, 0);
-    padding: 5px 20px; /* Ajustado para hacer la topbar más delgada */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    position: fixed;
-    z-index: 1000;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  height: 60px; /* Define una altura fija */
+  position: fixed; /* Fija la barra superior en su lugar */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Asegura que quede encima de otros elementos */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  animation: slideDown 0.5s ease-out; /* Animación de deslizamiento hacia abajo */
+}
+
+@keyframes slideDown {
+  0% {
+      transform: translateY(-100%);
+  }
+  100% {
+      transform: translateY(0);
+  }
 }
 
 .logo {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
-.logo-image {
-    width: 50px; /* Ajusta este valor según sea necesario */
-    height: auto; /* Mantiene la proporción original */
-    margin-right: 10px; /* Espacio entre el logo y el texto */
+.logo img {
+  height: 40px;
+  margin-right: 10px;
 }
 
 .user-info {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .user-info img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
+  height: 30px;
+  margin-right: 10px;
 }
 
-.notifications {
-    position: relative;
-}
-
-.badge {
-    position: absolute;
-    top: -5px;
-    right: -10px;
-    background-color: red;
-    color: white;
-    border-radius: 50%;
-    padding: 5px 7px;
-}
-
+/* Sidebar */
 .sidebar {
-    width: 250px;
-    background-color: #00174d;
-    color: white;
-    height: calc(100vh - 60px); /* Ajusta la altura para que no cubra la topbar */
-    position: fixed;
-    top: 60px; /* Mueve la barra lateral hacia abajo */
-    left: 0;
-    padding-top: 20px; /* Espacio adicional en la parte superior */
+  width: 250px;
+  background-color: #00064d;
+  color: white;
+  height: calc(100vh - 60px); /* Ajusta la altura para que no cubra la topbar */
+  position: fixed;
+  top: 60px; /* Mueve la barra lateral justo debajo de la topbar */
+  left: 0;
+  padding-top: 20px;
+  z-index: 900; /* Asegura que quede debajo de la topbar */
+  animation: slideIn 0.5s ease-out; /* Animación de deslizamiento hacia la izquierda */
+}
+
+@keyframes slideIn {
+  0% {
+      transform: translateX(-100%);
+  }
+  100% {
+      transform: translateX(0);
+  }
 }
 
 .sidebar ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 .sidebar li {
-    margin: 20px 0;
+  margin: 20px 0;
 }
 
 .sidebar a {
-    color: white;
-    text-decoration: none;
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
 }
 
 .sidebar a i {
-    margin-right: 15px; /* Espacio adicional entre el ícono y el texto */
+  margin-right: 15px; /* Espacio adicional entre el ícono y el texto */
 }
 
 .sidebar a:hover {
-    background-color: #002569;
+  background-color: #00695c;
 }
 
-.main-content {
-    margin-left: 250px;
-    padding: 80px 20px;
-    flex: 1;
-    transition: margin-left 0.3s; /* Transición suave al cambiar el tamaño */
+/* Dropdown Menu */
+.dropdown-menu {
+  display: none; /* Oculta el menú desplegable por defecto */
+  padding-left: 20px; /* Espaciado para el contenido desplegable */
+  transition: max-height 0.3s ease, opacity 0.3s ease; /* Transiciones suaves */
+  overflow: hidden; /* Evita que el contenido se desborde durante la animación */
 }
 
-.detail-container {
-    display: flex;
-    justify-content: space-between; /* Separa la imagen y la info */
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
+.dropdown-menu.show {
+  display: block; /* Muestra el menú cuando se activa la clase 'show' */
+  animation: slideDown 0.3s ease-in-out; /* Animación de deslizamiento */
 }
 
-.details-info {
-    flex: 1;
+@keyframes slideDown {
+  from {
+      max-height: 0;
+      opacity: 0;
+  }
+  to {
+      max-height: 200px; /* Ajusta según el contenido */
+      opacity: 1;
+  }
 }
 
-.detail-image {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Content */
+.content {
+  padding: 30px;
+  background-color: #f8fcff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: calc(100% - 270px); /* Asegura que el contenido no se salga de los márgenes */
+  animation: fadeIn 1.2s ease-in-out; /* Animación de aparición para el contenido */
 }
 
-.detail-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+/* Botones */
+.add-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  margin-bottom: 20px;
 }
 
-.detail-container h3 {
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #333;
+.add-button:hover {
+  background-color: #218838;
+  transform: scale(1.05);
 }
 
-.info-section {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
+/* Tablas */
+.gateway-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  animation: fadeIn 1s ease-in-out; /* Animación de aparición para tablas */
 }
 
-.info-section label {
-    font-weight: bold;
-    color: #555;
+.gateway-table th,
+.gateway-table td {
+  border: 1px solid #dee2e6;
+  padding: 10px;
+  text-align: center;
 }
 
-.info-section p {
-    margin: 5px 0;
-    color: #333;
+.table-row {
+  transition: background-color 0.3s;
 }
 
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+.table-row:hover {
+  background-color: #f1f1f1;
 }
 
-.grid-item {
-    background-color: #f0f8ff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.status-active {
+  color: #28a745;
 }
 
-/* Media Queries para Responsividad */
-@media (min-width: 768px) {
-    .main-content {
-        padding: 80px 20px;
-    }
+.status-inactive {
+  color: #dc3545;
 }
 
-@media (min-width: 1024px) {
-    .sidebar {
-        width: 300px; /* Aumenta el ancho en pantallas más grandes */
-    }
-
-    .main-content {
-        margin-left: 300px; /* Ajusta el margen para el contenido principal */
-    }
+/* Formularios */
+.modal-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
 }
 
-@media (min-width: 1920px) {
-    .topbar {
-        padding: 10px 40px; /* Ajusta el padding para pantallas grandes */
-    }
-
-    .sidebar {
-        padding-top: 30px; /* Espacio adicional en la barra lateral */
-    }
+.gateway-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-in-out; /* Animación de aparición para formularios */
 }
 
-/* Estilos de la tabla */
-.styled-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 18px;
-    font-family: 'Roboto', sans-serif;
-    text-align: left;
-    background-color: #f8fcff;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+.form-group {
+  margin-bottom: 15px;
 }
 
-.styled-table thead tr {
-    background-color: #009879;
-    color: #ffffff;
-    text-align: center;
-    font-weight: bold;
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #555;
 }
 
-.styled-table th,
-.styled-table td {
-    padding: 12px 15px;
-    border: 1px solid #ddd;
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s;
 }
 
-.styled-table tbody tr {
-    border-bottom: 1px solid #dddddd;
+input:focus,
+select:focus {
+  border-color: #007bff;
 }
 
-.styled-table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
+/* Botones de formulario */
+.register-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  width: 100%;
 }
 
-.styled-table tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
+.register-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
 }
 
-.styled-table tbody tr:hover {
-    background-color: #f1f7f9;
-    cursor: pointer;
+.delete-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+}
+
+.edit-button {
+  background-color: #ffc107;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.edit-button:hover {
+  background-color: #e0a800;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Asegura que el modal esté encima de otros elementos */
+}
+
+.modal.hidden {
+  display: none; /* Oculta el modal cuando tiene la clase 'hidden' */
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px; /* Ancho del modal */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra para un efecto de elevación */
+}
+
+/* Estilo para el título del modal */
+.modal-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Estilo para la clase de formulario dentro del modal */
+.gateway-form {
+  display: flex;
+  flex-direction: column; /* Alinea los elementos del formulario en una columna */
+}
+
+/* Espaciado entre los grupos de formulario */
+.form-group {
+  margin-bottom: 15px;
 }
